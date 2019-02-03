@@ -2,5 +2,5 @@ package com.lambton;
 
 public interface IPrintable
 {
-    public String printMyData();
+    public void printMyData();
 }

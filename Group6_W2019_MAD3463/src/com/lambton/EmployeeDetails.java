@@ -22,6 +22,7 @@ public class EmployeeDetails {
         alist.add(45);
         for (int i = 0; i < alist.size(); i++) {
             System.out.println("Age:" + alist.get(i));
+
         }
 
     }

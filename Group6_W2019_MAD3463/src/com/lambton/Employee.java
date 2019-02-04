@@ -11,12 +11,13 @@ public class Employee {
         System.out.println(userName);
         Intern in1 = new Intern(1, "A", "a", "M", 45, "Toronto", "MADT", "Lambton College", 1000);
         FullTime f1 = new FullTime(1, "B", "b", "F", 87, "Hamilton", 5000f, 500);
-        CommissionBasedPartTime c1 = new CommissionBasedPartTime(1, "C", "c", "F", 96, "London", 14, 10);
-
+        CommissionBasedPartTime c1 = new CommissionBasedPartTime(1, "C", "c", "F", 96, "London", 14, 10,10);
+        FixedBasedPartTime fp1=new FixedBasedPartTime(1,"D","d","M",58,"New York",11,9,40f);
         IPrintable[] employees = new IPrintable[100];
         employees[0] = in1;
         employees[1] = f1;
         employees[2] = c1;
+        employees[3]=fp1;
         for (IPrintable p : employees) {
             //Display all details
             p.printMyData();
@@ -33,7 +34,7 @@ public class Employee {
                         in.getGender(),
                         in.getAge());
                 in.calBirthYear();
-                System.out.printf("\nCity: %-10s \nCourseName: %-10s \nSchoolName: %-10s \nEarnings: %-10d\n",
+                System.out.printf("\nCity: %-10s \nCourseName: %-10s \nSchoolName: %-10s \nEarnings: %f\n",
                         in.getCity(),
                         in.getCourseName(),
                         in.getSchoolName(),
@@ -63,11 +64,28 @@ public class Employee {
                         c.getGender(),
                         c.getAge());
                 c.calBirthYear();
-                System.out.printf("\nCity: %-10s \nRate: %d \nhoursWorked: %d \n",
+                System.out.printf("\nCity: %-10s \nRate: %d \nhoursWorked: %d \nCommission: %d\n",
                         c.getCity(),
                         c.getRate(),
-                        c.getHoursWorked());
-                c.calcEarnings();
+                        c.getHoursWorked(),
+                c.getCommission());
+                c.CommissionPercCalcEarnings();
+            }
+            else if (p instanceof FixedBasedPartTime) {
+                FixedBasedPartTime fp = (FixedBasedPartTime) p;
+                System.out.printf("\nID: %d \nFirstName: %-15s \nLastName: %-5s \nGender: %-8s \nAge: %d \n",
+                        fp.getId(),
+                        fp.getFirstName(),
+                        fp.getLastName(),
+                        fp.getGender(),
+                        fp.getAge());
+                fp.calBirthYear();
+                System.out.printf("\nCity: %-10s \nRate: %d \nhoursWorked: %d \nFixedAmount: %f\n",
+                        fp.getCity(),
+                        fp.getRate(),
+                        fp.getHoursWorked(),
+                        fp.getFixedAmount());
+                fp.FixedAmountCalcEarnings();
             }
 
         }
